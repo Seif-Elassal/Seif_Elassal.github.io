@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seif Alaa Eldin Elassal | Cybersecurity Student &amp; Aspiring SOC Analyst</title>
+<meta name="description" content="Portfolio of Seif Alaa Eldin Elassal, a Computer Science & Information Systems student building foundations in cybersecurity, networking, and security operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B111C;
+    --bg-panel: #101827;
+    --bg-panel-raised: #141F33;
+    --line: #22304A;
+    --text: #E7ECF3;
+    --text-mute: #8D9BB3;
+    --text-faint: #5C6A85;
+    --accent: #4C8DFF;
+    --accent-soft: rgba(76,141,255,0.12);
+    --accent-line: rgba(76,141,255,0.35);
+    --amber: #F2B705;
+    --radius-s: 4px;
+    --radius-m: 8px;
+    --maxw: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:#fff;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  ::selection{background:var(--accent-soft); color:#fff;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,17,28,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .nav-logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600; font-size:1.05rem; color:#fff;
+    display:flex; align-items:center; gap:8px;
+    text-decoration:none;
+  }
+  .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    font-size:0.92rem; color:var(--text-mute); text-decoration:none;
+    transition:color 0.15s ease;
+  }
+  .nav-links a:hover{color:#fff;}
+  .nav-cta{
+    font-size:0.85rem; padding:8px 16px; border:1px solid var(--accent-line);
+    border-radius:var(--radius-s); color:var(--accent); text-decoration:none;
+    transition:background 0.15s ease, color 0.15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--accent-soft);}
+  .nav-toggle{display:none; background:none; border:none; color:#fff; padding:8px; cursor:pointer;}
+  .nav-toggle svg{width:24px; height:24px;}
+
+  @media (max-width: 860px){
+    .nav-links{
+      position:fixed; top:64px; left:0; right:0;
+      background:var(--bg-panel); border-bottom:1px solid var(--line);
+      flex-direction:column; padding:16px 28px; gap:0;
+      transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition:opacity 0.2s ease, transform 0.2s ease;
+    }
+    .nav-links.open{opacity:1; pointer-events:auto; transform:translateY(0);}
+    .nav-links li{border-bottom:1px solid var(--line);}
+    .nav-links li:last-child{border-bottom:none;}
+    .nav-links a{display:block; padding:14px 0;}
+    .nav-toggle{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:96px 0 88px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid-bg{
+    position:absolute; inset:0; z-index:0;
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .hero .wrap{
+    position:relative; z-index:1;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem; color:var(--accent);
+    margin-bottom:20px;
+  }
+  .eyebrow-line .rule{width:28px; height:1px; background:var(--accent);}
+  .hero h1{
+    font-size:clamp(2.1rem, 4.2vw, 3.15rem);
+    line-height:1.08;
+    margin-bottom:14px;
+  }
+  .hero .role{
+    font-size:1.15rem; color:var(--text-mute);
+    font-family:'Space Grotesk',sans-serif; font-weight:500;
+    margin-bottom:22px;
+  }
+  .hero .role span{color:var(--accent);}
+  .hero p.lede{
+    color:var(--text-mute); font-size:1.02rem; max-width:52ch;
+    margin-bottom:32px;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:var(--radius-s);
+    text-decoration:none; font-size:0.92rem; font-weight:500;
+    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    cursor:pointer; border:1px solid transparent;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--accent); color:#08101F;}
+  .btn-primary:hover{background:#699bff;}
+  .btn-outline{border-color:var(--line); color:var(--text);}
+  .btn-outline:hover{border-color:var(--accent-line); background:var(--accent-soft);}
+  .btn-ghost{color:var(--text-mute); padding-left:6px; padding-right:6px;}
+  .btn-ghost:hover{color:#fff;}
+
+  .hero-photo-wrap{
+    position:relative;
+    display:flex; justify-content:center;
+  }
+  .hero-photo-frame{
+    position:relative;
+    width:min(320px, 82%);
+    aspect-ratio:1/1;
+    border-radius:var(--radius-m);
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--bg-panel);
+  }
+  .hero-photo-frame img{width:100%; height:100%; object-fit:cover;}
+  .hero-photo-frame::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:var(--radius-m);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+  }
+  .hero-photo-tag{
+    position:absolute; bottom:-14px; left:50%; transform:translateX(-50%);
+    background:var(--bg-panel-raised); border:1px solid var(--line);
+    padding:8px 16px; border-radius:var(--radius-s);
+    font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--text-mute);
+    white-space:nowrap;
+  }
+  .hero-photo-tag .status-dot{
+    display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:#3ED598; margin-right:6px;
+  }
+
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr; gap:48px;}
+    .hero-photo-wrap{order:-1;}
+    .hero-photo-frame{width:200px;}
+  }
+
+  /* SECTION SHARED */
+  section{padding:84px 0;}
+  section.alt{background:var(--bg-panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:44px; max-width:60ch;}
+  .section-head .eyebrow-line{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.55rem, 2.6vw, 2.05rem); margin-bottom:12px;}
+  .section-head p{color:var(--text-mute); font-size:1rem;}
+
+  /* ABOUT */
+  .about-grid{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:start;
+  }
+  .about-copy p{color:var(--text-mute); margin:0 0 16px; max-width:62ch;}
+  .about-copy p:last-child{margin-bottom:0;}
+  .about-facts{
+    display:flex; flex-direction:column; gap:0;
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    overflow:hidden;
+  }
+  .about-fact{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .about-fact:last-child{border-bottom:none;}
+  .about-fact dt{color:var(--text-faint); font-family:'IBM Plex Mono',monospace; font-size:0.8rem;}
+  .about-fact dd{margin:0; color:var(--text); text-align:right; font-weight:500;}
+
+  @media (max-width: 860px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* EDUCATION */
+  .edu-card{
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:32px; background:var(--bg-panel-raised);
+    display:grid; grid-template-columns:auto 1fr; gap:28px;
+  }
+  .edu-mark{
+    width:52px; height:52px; border-radius:var(--radius-s);
+    background:var(--accent-soft); border:1px solid var(--accent-line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent);
+    font-size:1.1rem;
+  }
+  .edu-top{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;
+    margin-bottom:6px;
+  }
+  .edu-card h3{font-size:1.15rem;}
+  .edu-loc{color:var(--text-faint); font-size:0.88rem; margin-top:4px;}
+  .edu-meta{
+    display:flex; flex-wrap:wrap; gap:10px 28px; margin:16px 0 20px;
+    font-size:0.88rem; color:var(--text-mute);
+  }
+  .edu-meta strong{color:var(--text); font-weight:600;}
+  .edu-course-label{
+    font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--text-faint);
+    margin-bottom:10px;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-size:0.82rem; padding:6px 12px; border-radius:var(--radius-s);
+    border:1px solid var(--line); color:var(--text-mute);
+    background:var(--bg-panel);
+  }
+  @media (max-width: 620px){
+    .edu-card{grid-template-columns:1fr;}
+  }
+
+  /* SKILLS */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  }
+  .skill-card{
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:24px; background:var(--bg-panel-raised);
+  }
+  .skill-card h3{
+    font-size:0.95rem; margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+    color:var(--text);
+  }
+  .skill-card h3 .ic{color:var(--accent); flex-shrink:0;}
+  .skill-card .tag-row .tag{background:var(--bg-panel);}
+  @media (max-width: 860px){ .skills-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width: 560px){ .skills-grid{grid-template-columns:1fr;} }
+
+  /* PROJECTS */
+  .projects-stack{display:flex; flex-direction:column; gap:20px;}
+  .project-card{
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    background:var(--bg-panel-raised);
+    padding:32px;
+  }
+  .project-card.featured{
+    border-color:var(--accent-line);
+    background:linear-gradient(155deg, rgba(76,141,255,0.07), rgba(76,141,255,0) 55%), var(--bg-panel-raised);
+  }
+  .project-top{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 20px;
+    margin-bottom:14px;
+  }
+  .project-top h3{font-size:1.2rem;}
+  .project-flag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--accent);
+    border:1px solid var(--accent-line); background:var(--accent-soft);
+    padding:4px 10px; border-radius:99px; white-space:nowrap; height:fit-content;
+  }
+  .project-card p.desc{color:var(--text-mute); margin:0 0 18px; max-width:70ch;}
+  .project-detail-label{
+    font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--text-faint);
+    margin:18px 0 8px;
+  }
+  .project-detail-label:first-of-type{margin-top:0;}
+  ul.impl-list{margin:0; padding-left:18px; color:var(--text-mute); font-size:0.94rem;}
+  ul.impl-list li{margin-bottom:6px;}
+  .project-tech .tag-row{margin-top:2px;}
+
+  /* LEARNING FOCUS */
+  .focus-note{
+    border-left:2px solid var(--accent);
+    padding:14px 20px; margin-bottom:32px;
+    background:var(--bg-panel-raised); border-radius:0 var(--radius-s) var(--radius-s) 0;
+    color:var(--text-mute); font-size:0.94rem; max-width:70ch;
+  }
+  .focus-note strong{color:var(--text);}
+  .focus-grid{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .focus-chip{
+    display:flex; align-items:center; gap:8px;
+    padding:9px 16px; border:1px solid var(--line); border-radius:99px;
+    font-size:0.86rem; color:var(--text-mute); background:var(--bg-panel);
+  }
+  .focus-chip .status-dot{width:6px;height:6px;border-radius:50%;background:var(--amber); flex-shrink:0;}
+
+  /* CAREER GOAL */
+  .goal-card{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; align-items:center;
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:40px; background:var(--bg-panel-raised);
+  }
+  .goal-label{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent); margin-bottom:10px;}
+  .goal-card h3{font-size:1.5rem; margin-bottom:0;}
+  .goal-points{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .goal-points li{
+    display:flex; gap:12px; color:var(--text-mute); font-size:0.94rem; align-items:flex-start;
+  }
+  .goal-points li .num{
+    font-family:'IBM Plex Mono',monospace; color:var(--text-faint); font-size:0.8rem; margin-top:2px;
+  }
+  @media (max-width:760px){ .goal-card{grid-template-columns:1fr;} }
+
+  /* LANGUAGES + INTERESTS */
+  .split-two{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .mini-card{
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:26px; background:var(--bg-panel-raised);
+  }
+  .mini-card h3{font-size:0.95rem; margin-bottom:18px; color:var(--text-mute); font-weight:500; font-family:'IBM Plex Mono',monospace; text-transform:none;}
+  .lang-row{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); font-size:0.95rem;}
+  .lang-row:last-child{border-bottom:none;}
+  .lang-level{color:var(--text-faint); font-size:0.82rem; font-family:'IBM Plex Mono',monospace;}
+  @media (max-width:700px){ .split-two{grid-template-columns:1fr;} }
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+  }
+  .contact-card{
+    border:1px solid var(--line); border-radius:var(--radius-m);
+    padding:24px; background:var(--bg-panel-raised);
+    text-decoration:none; color:var(--text);
+    display:flex; flex-direction:column; gap:14px;
+    transition:border-color 0.15s ease, transform 0.15s ease;
+  }
+  .contact-card:hover{border-color:var(--accent-line); transform:translateY(-2px);}
+  .contact-card .ic{color:var(--accent);}
+  .contact-card .label{font-size:0.78rem; color:var(--text-faint); font-family:'IBM Plex Mono',monospace;}
+  .contact-card .value{font-size:0.98rem; word-break:break-word;}
+  @media (max-width:760px){ .contact-grid{grid-template-columns:1fr;} }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+  footer .wrap{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;
+    font-size:0.85rem; color:var(--text-faint);
+  }
+
+  /* reveal animation - single orchestrated hero sequence only */
+  .hero-anim > *{
+    opacity:0; transform:translateY(10px);
+    animation:heroIn 0.6s ease forwards;
+  }
+  .hero-anim > *:nth-child(1){animation-delay:0.05s;}
+  .hero-anim > *:nth-child(2){animation-delay:0.14s;}
+  .hero-anim > *:nth-child(3){animation-delay:0.22s;}
+  .hero-anim > *:nth-child(4){animation-delay:0.30s;}
+  @keyframes heroIn{ to{opacity:1; transform:translateY(0);} }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-logo"><span class="dot"></span>S. Elassal</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact me</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-grid-bg" width="100%" height="100%" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1B2740" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="700" fill="url(#grid)"/>
+      <g stroke="#2A3B5C" stroke-width="1" opacity="0.7">
+        <line x1="820" y1="60" x2="1040" y2="140"/>
+        <line x1="1040" y1="140" x2="1150" y2="90"/>
+        <line x1="820" y1="60" x2="900" y2="230"/>
+        <line x1="900" y1="230" x2="1080" y2="300"/>
+        <line x1="1080" y1="300" x2="1150" y2="230"/>
+        <line x1="900" y1="230" x2="820" y2="380"/>
+      </g>
+      <g fill="#4C8DFF">
+        <circle cx="820" cy="60" r="3"/>
+        <circle cx="1040" cy="140" r="3"/>
+        <circle cx="1150" cy="90" r="3"/>
+        <circle cx="900" cy="230" r="3"/>
+        <circle cx="1080" cy="300" r="3"/>
+        <circle cx="1150" cy="230" r="3"/>
+        <circle cx="820" cy="380" r="3"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div class="hero-anim">
+        <div class="eyebrow-line"><span class="rule"></span>Cairo, Egypt — Available for internships</div>
+        <h1>Seif Alaa Eldin Elassal</h1>
+        <div class="role">Cybersecurity Student <span>/</span> Aspiring SOC Analyst</div>
+        <p class="lede">Computer Science and Information Systems student building foundations in networking, Linux, and security operations — working toward a career defending systems and monitoring for threats.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View my projects</a>
+          <a href="#contact" class="btn btn-outline">Contact me</a>
+          <a href="Seif_Elassal_CV.pdf" class="btn btn-ghost" download>Download CV ↓</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-frame">
+          <img src="profile.jpg" alt="Portrait of Seif Alaa Eldin Elassal">
+        </div>
+        <div class="hero-photo-tag"><span class="status-dot"></span>student · cs & information systems</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>About</div>
+        <h2>Building a foundation, one layer at a time</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I'm a Computer Science and Information Systems student at the Egyptian Chinese University, currently developing my technical foundations in cybersecurity, networking, and Linux. My interest in this field started with wanting to understand how systems actually work — and grew into a focus on how they're defended.</p>
+          <p>Right now, I'm building practical skills in TCP/IP, subnetting, network troubleshooting, and core security fundamentals, alongside hands-on time with Linux, Kali Linux, and tools like Nmap and Wireshark. I'm especially drawn to Security Operations — the process of monitoring, detecting, and responding to threats — and I'm shaping my coursework and personal projects around that direction.</p>
+          <p>I'm not presenting myself as an experienced security engineer. I'm a student who is serious about the fundamentals and looking for a first real opportunity — an internship or entry-level role — to apply what I'm learning in a practical setting.</p>
+        </div>
+        <dl class="about-facts">
+          <div class="about-fact"><dt>Status</dt><dd>Undergraduate student</dd></div>
+          <div class="about-fact"><dt>Program</dt><dd>CS & Information Systems</dd></div>
+          <div class="about-fact"><dt>Focus</dt><dd>Cybersecurity & Networking</dd></div>
+          <div class="about-fact"><dt>Direction</dt><dd>Security Operations (SOC)</dd></div>
+          <div class="about-fact"><dt>Looking for</dt><dd>Cybersecurity internship</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>Education</div>
+        <h2>Academic background</h2>
+      </div>
+      <div class="edu-card">
+        <div class="edu-mark">ECU</div>
+        <div>
+          <div class="edu-top">
+            <div>
+              <h3>Bachelor of Computer Science and Information Systems</h3>
+              <div class="edu-loc">Egyptian Chinese University (ECU) — Cairo, Egypt</div>
+            </div>
+          </div>
+          <div class="edu-meta">
+            <span>Expected graduation: <strong>2028</strong></span>
+            <span>Class standing: <strong>Excellent (Distinction)</strong></span>
+          </div>
+          <div class="edu-course-label">relevant coursework</div>
+          <div class="tag-row">
+            <span class="tag">Networking (TCP/IP)</span>
+            <span class="tag">Cybersecurity Fundamentals</span>
+            <span class="tag">Computer Architecture</span>
+            <span class="tag">Data Structures & Algorithms</span>
+            <span class="tag">Object-Oriented Programming</span>
+            <span class="tag">Relational Databases</span>
+            <span class="tag">Database Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>Skills</div>
+        <h2>Technical foundations</h2>
+        <p>Skills I'm actively developing through coursework and personal projects — presented as areas of knowledge, not proficiency scores.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Cybersecurity</h3>
+          <div class="tag-row">
+            <span class="tag">Cybersecurity Fundamentals</span>
+            <span class="tag">Network Security Fundamentals</span>
+            <span class="tag">Security Awareness</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>Networking</h3>
+          <div class="tag-row">
+            <span class="tag">TCP/IP</span>
+            <span class="tag">IPv4</span>
+            <span class="tag">Subnetting</span>
+            <span class="tag">DNS</span>
+            <span class="tag">Network Troubleshooting</span>
+            <span class="tag">Common Protocols</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Security Tools</h3>
+          <div class="tag-row">
+            <span class="tag">Nmap</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">Kali Linux</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M8 21h8M12 18v3"/></svg>Operating Systems</h3>
+          <div class="tag-row">
+            <span class="tag">Linux</span>
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Windows Fundamentals</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>Programming</h3>
+          <div class="tag-row">
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3><svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Database</h3>
+          <div class="tag-row">
+            <span class="tag">SQL Server</span>
+            <span class="tag">Relational DB Design</span>
+            <span class="tag">ERD</span>
+            <span class="tag">Stored Procedures</span>
+            <span class="tag">Triggers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>Projects</div>
+        <h2>Things I've built</h2>
+        <p>Three projects from coursework and independent practice, applying networking, security, and database concepts.</p>
+      </div>
+      <div class="projects-stack">
+
+        <div class="project-card featured">
+          <div class="project-top">
+            <h3>Subnet Calculator System</h3>
+            <span class="project-flag">networking · hardware-integrated</span>
+          </div>
+          <p class="desc">A subnet calculator that integrates Arduino hardware with a Python Flask backend, applying IPv4 addressing and subnetting concepts through a client-server architecture.</p>
+          <div class="project-detail-label">what I implemented</div>
+          <ul class="impl-list">
+            <li>Integrated Arduino hardware with a Python Flask backend to process subnetting requests</li>
+            <li>Implemented TCP socket communication between the hardware and backend</li>
+            <li>Applied IPv4 addressing and subnetting concepts to calculate network information</li>
+            <li>Processed and validated network input through a client-server architecture</li>
+          </ul>
+          <div class="project-tech">
+            <div class="project-detail-label">technologies</div>
+            <div class="tag-row">
+              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">C++</span><span class="tag">Arduino</span><span class="tag">TCP Sockets</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <h3>Clinic Management System</h3>
+            <span class="project-flag">C++ · OOP</span>
+          </div>
+          <p class="desc">A console-based management system built to practice object-oriented design and structured problem-solving.</p>
+          <div class="project-detail-label">what I implemented</div>
+          <ul class="impl-list">
+            <li>Built a console-based system applying object-oriented programming principles</li>
+            <li>Used encapsulation, inheritance, and polymorphism to structure the codebase</li>
+            <li>Focused on structured, maintainable problem-solving</li>
+          </ul>
+          <div class="project-tech">
+            <div class="project-detail-label">technology</div>
+            <div class="tag-row"><span class="tag">C++</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <h3>Cinema Booking Management System</h3>
+            <span class="project-flag">SQL Server · database design</span>
+          </div>
+          <p class="desc">A relational database system for managing customers, reservations, screenings, and payments.</p>
+          <div class="project-detail-label">what I implemented</div>
+          <ul class="impl-list">
+            <li>Designed a relational database schema and entity-relationship diagram (ERD)</li>
+            <li>Modeled customers, reservations, screenings, and payments</li>
+            <li>Implemented stored procedures and triggers for automation and data integrity</li>
+          </ul>
+          <div class="project-tech">
+            <div class="project-detail-label">technology</div>
+            <div class="tag-row"><span class="tag">SQL Server</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>Certifications</div>
+        <h2>Coursework and certificates</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Introduction to Cybersecurity</h3>
+          <div class="tag-row"><span class="tag">Cisco Networking Academy (ELCC)</span></div>
+        </div>
+        <div class="skill-card">
+          <h3>Digital Safety and Security Awareness</h3>
+          <div class="tag-row"><span class="tag">Cisco Networking Academy (ELCC)</span></div>
+        </div>
+        <div class="skill-card">
+          <h3>Introduction to SQL</h3>
+          <div class="tag-row"><span class="tag">DataCamp</span></div>
+        </div>
+        <div class="skill-card">
+          <h3>Intermediate SQL</h3>
+          <div class="tag-row"><span class="tag">DataCamp</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNING FOCUS -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>Current focus</div>
+        <h2>What I'm learning right now</h2>
+      </div>
+      <div class="focus-note"><strong>Note:</strong> this section reflects my current learning and career direction — not professional work experience.</div>
+      <div class="focus-grid">
+        <span class="focus-chip"><span class="status-dot"></span>Cybersecurity Fundamentals</span>
+        <span class="focus-chip"><span class="status-dot"></span>Network Security</span>
+        <span class="focus-chip"><span class="status-dot"></span>TCP/IP</span>
+        <span class="focus-chip"><span class="status-dot"></span>IPv4 & Subnetting</span>
+        <span class="focus-chip"><span class="status-dot"></span>Linux</span>
+        <span class="focus-chip"><span class="status-dot"></span>Kali Linux</span>
+        <span class="focus-chip"><span class="status-dot"></span>Nmap</span>
+        <span class="focus-chip"><span class="status-dot"></span>Wireshark</span>
+        <span class="focus-chip"><span class="status-dot"></span>Security Awareness</span>
+        <span class="focus-chip"><span class="status-dot"></span>Security Operations</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER GOAL -->
+  <section>
+    <div class="wrap">
+      <div class="goal-card">
+        <div>
+          <div class="goal-label">career goal</div>
+          <h3>Cybersecurity / SOC Internship</h3>
+        </div>
+        <ul class="goal-points">
+          <li><span class="num">01</span>Gain practical, hands-on experience in a real security environment</li>
+          <li><span class="num">02</span>Develop security monitoring and log-analysis skills</li>
+          <li><span class="num">03</span>Strengthen networking and Linux knowledge through applied work</li>
+          <li><span class="num">04</span>Build a solid foundation for a career in Security Operations</li>
+          <li><span class="num">05</span>Continue learning defensive cybersecurity concepts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES + INTERESTS -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="split-two">
+        <div class="mini-card">
+          <h3>Languages</h3>
+          <div class="lang-row"><span>Arabic</span><span class="lang-level">Native</span></div>
+          <div class="lang-row"><span>English</span><span class="lang-level">Intermediate</span></div>
+        </div>
+        <div class="mini-card">
+          <h3>Interests</h3>
+          <div class="tag-row">
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Network Security</span>
+            <span class="tag">Security Operations</span>
+            <span class="tag">Software Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"><span class="rule"></span>Contact</div>
+        <h2>Let's talk</h2>
+        <p>Open to cybersecurity and SOC internship opportunities. Reach out through any of the channels below.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:seifalassal50@gmail.com">
+          <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+          <div class="label">Email</div>
+          <div class="value">seifalassal50@gmail.com</div>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/seif-elassal-119999346" target="_blank" rel="noopener">
+          <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <div class="label">LinkedIn</div>
+          <div class="value">linkedin.com/in/seif-elassal-119999346</div>
+        </a>
+        <a class="contact-card" href="tel:+201115957862">
+          <svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <div class="label">Phone</div>
+          <div class="value">+20 111 595 7862</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Seif Alaa Eldin Elassal</span>
+    <span>Built for cybersecurity internship applications</span>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+</script>
+
+</body>
+</html>
